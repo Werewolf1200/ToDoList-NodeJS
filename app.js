@@ -35,7 +35,7 @@ function listTasks() {
         tasks.forEach((task, index) => {
             let status = task.completed ? "OK" : "NO";
 
-            if (status) {
+            if (task.completed) {
                 console.log(chalk.green.bold(`${index + 1}. ${status} - ${task.task}`));
             } else {
                 console.log(chalk.redBright(`${index + 1}. ${status} - ${task.task}`));
@@ -45,6 +45,20 @@ function listTasks() {
 
     displayMenu();
     chooseOption();
+}
+
+function completeTask() {
+    rl.question(chalk.bgMagentaBright("Digita el número de la tarea a Completar: "), (taskNumber) => {
+        const index = parseInt(taskNumber) - 1;
+        if (index >= 0 && index < tasks.length) {
+            tasks[index].completed = true;
+            console.log(chalk.green.bold("Tarea completada con exito"));
+        } else {
+            console.log(chalk.red.bold("Número de tarea inválido"));
+        }
+        displayMenu();
+        chooseOption();
+    });
 }
 
 function chooseOption() {
@@ -57,7 +71,7 @@ function chooseOption() {
                 listTasks();
                 break;
             case "3":
-                console.log("Completar Tarea")
+                completeTask();
                 break;
             case "4":
                 console.log(chalk.yellow("Adios!"));
