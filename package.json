@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "node app-file.js"
   },
   "keywords": [],
   "author": "Saúl Camacho",
